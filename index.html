@@ -1,613 +1,366 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emanuel Mota | Portfólio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emanuel Mota | IAM & Infraestrutura</title>
+<meta name="description" content="Emanuel Mota Lisboa — Analista de Infraestrutura com foco em Gestão de Identidades e Acessos (IAM). 5 anos em TI corporativa, mais de 3 no setor financeiro.">
+<meta property="og:title" content="Emanuel Mota | IAM & Infraestrutura">
+<meta property="og:description" content="Analista de Infraestrutura com foco em Gestão de Identidades e Acessos (IAM). Entra ID · Active Directory · Azure · Zabbix · Grafana.">
+<meta property="og:image" content="./foto.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b12;--bg2:#11111b;--card:#151522;--line:#24243a;
+  --text:#e9e9f2;--muted:#9a9ab3;--accent:#7c5cff;--accent2:#3b82f6;
+  --grad:linear-gradient(90deg,#8b5cf6,#3b82f6);
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono{font-family:'JetBrains Mono',monospace}
 
-    :root {
-      --bg: #0f1117;
-      --surface: #1a1d27;
-      --surface2: #242736;
-      --accent: #7c3aed;
-      --accent-light: #a78bfa;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --border: #2d3148;
-      --gradient: linear-gradient(135deg, #7c3aed, #3b82f6);
-    }
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(11,11,18,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.menu{display:flex;gap:22px;font-size:.9rem;color:var(--muted)}
+.menu a:hover{color:var(--text)}
+@media(max-width:760px){.menu{display:none}}
 
-    html { scroll-behavior: smooth; }
+/* HERO */
+.hero{padding:80px 0 56px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-200px -200px auto auto;width:600px;height:600px;background:radial-gradient(circle,rgba(124,92,255,.18),transparent 60%);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;padding:6px 12px;border:1px solid #3a2f73;background:rgba(124,92,255,.1);border-radius:999px;color:#c9bcff}
+.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.15)}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;margin:18px 0 14px;font-weight:800;letter-spacing:-.02em}
+h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.1rem;color:var(--muted);max-width:560px}
+.lead strong{color:var(--text);font-weight:600}
+.cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{padding:11px 20px;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--line);transition:.2s}
+.btn.primary{background:var(--grad);border:none;color:#fff}
+.btn:hover{transform:translateY(-2px)}
+.photo{justify-self:center;width:260px;height:260px;border-radius:50%;padding:4px;background:var(--grad)}
+.photo img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid var(--bg)}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.photo{order:-1;width:180px;height:180px}}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+/* STATS */
+.hero .stats-wrap{display:block}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.stat b{display:block;font-size:1.6rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:.85rem;color:var(--muted)}
+@media(max-width:760px){.stats{grid-template-columns:1fr 1fr}}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: rgba(15, 17, 23, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
+/* SECTIONS */
+section{padding:72px 0;border-top:1px solid var(--line)}
+.kicker{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h2{font-size:clamp(1.6rem,3vw,2.1rem);margin:6px 0 10px;letter-spacing:-.01em}
+.sub{color:var(--muted);max-width:640px;margin-bottom:36px}
+.about p{color:#cfcfe0;max-width:760px;margin-bottom:14px}
 
-    .nav-logo {
-      font-weight: 700;
-      font-size: 1.1rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+/* PILLARS */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:.2s}
+.card:hover{border-color:#3a3a5c}
+.card .ico{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:rgba(124,92,255,.12);color:#b8a6ff;margin-bottom:14px}
+.card h3{font-size:1.05rem;margin-bottom:8px}
+.card p{font-size:.92rem;color:var(--muted)}
+.card.main{border-color:#4b3a9c;background:linear-gradient(180deg,rgba(124,92,255,.10),var(--card))}
 
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--text); }
+/* TIMELINE */
+.tl{position:relative;padding-left:28px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(#8b5cf6,#3b82f6 60%,var(--line))}
+.item{position:relative;margin-bottom:28px}
+.item::before{content:"";position:absolute;left:-27px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.item .when{font-size:.8rem;color:var(--muted)}
+.item h3{font-size:1.05rem;margin:2px 0}
+.item .org{color:#b8a6ff;font-size:.92rem;font-weight:500}
+.item ul{margin:10px 0 0 18px;color:#c7c7d8;font-size:.93rem}
+.item li{margin-bottom:4px}
+.tag{display:inline-block;font-size:.72rem;padding:2px 8px;border-radius:999px;background:rgba(59,130,246,.12);color:#93b8ff;margin-left:6px;vertical-align:middle}
 
-    /* ── HAMBURGER ── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: .4rem;
-      background: none;
-      border: none;
-    }
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all .3s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* SKILLS */
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{font-size:.84rem;padding:6px 12px;border-radius:8px;background:var(--bg2);border:1px solid var(--line);color:#d8d8e8}
+.chip.hl{border-color:#4b3a9c;color:#d7ccff}
 
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 57px; left: 0; right: 0;
-      background: rgba(15,17,23,.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-      z-index: 99;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 500;
-      transition: color .2s;
-    }
-    .mobile-menu a:hover { color: var(--text); }
+/* CERTS */
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.certs{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.certs{grid-template-columns:1fr}}
+.cert{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.cert small{color:var(--muted);font-size:.8rem}
+.cert b{display:block;font-size:.95rem;margin:4px 0}
+.cert .issuer{font-size:.85rem;color:#b8a6ff}
 
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-    }
+/* PROJECTS */
+.proj{display:flex;flex-direction:column;justify-content:space-between}
+.proj .chips{margin-top:14px}
+.proj a.link{margin-top:14px;font-size:.88rem;color:#93b8ff}
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
+/* CONTACT */
+.contact{text-align:center}
+.contact .sub{margin:0 auto 26px}
+.contact .cta{justify-content:center}
+footer{padding:28px 0;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(124,58,237,.15) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      max-width: 960px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 4rem;
-    }
-
-    .hero-text {
-      flex: 1;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(124,58,237,.15);
-      border: 1px solid rgba(124,58,237,.3);
-      color: var(--accent-light);
-      padding: .3rem .9rem;
-      border-radius: 999px;
-      font-size: .8rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero h1 span {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 480px;
-      margin-bottom: 2rem;
-      line-height: 1.7;
-    }
-
-    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-    /* ── FOTO NO HERO ── */
-    .hero-photo {
-      flex-shrink: 0;
-      position: relative;
-    }
-
-    .hero-photo::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: var(--gradient);
-      z-index: 0;
-    }
-
-    .hero-photo::after {
-      content: '';
-      position: absolute;
-      inset: -12px;
-      border-radius: 50%;
-      background: var(--gradient);
-      opacity: .15;
-      filter: blur(20px);
-      z-index: -1;
-    }
-
-    .hero-photo img {
-      position: relative;
-      z-index: 1;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      border: 4px solid var(--bg);
-    }
-
-    /* Mobile: empilha, foto em cima */
-    @media (max-width: 760px) {
-      .hero-inner {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 2.5rem;
-      }
-      .hero-text { display: flex; flex-direction: column; align-items: center; }
-      .hero p { max-width: 100%; }
-      .hero-photo img { width: 180px; height: 180px; }
-    }
-
-    /* ── BOTÕES ── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .7rem 1.5rem;
-      border-radius: 8px;
-      font-size: .95rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all .2s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--gradient);
-      color: #fff;
-    }
-    .btn-primary:hover { opacity: .85; transform: translateY(-1px); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--accent-light); color: var(--accent-light); transform: translateY(-1px); }
-
-    /* ── SECTIONS ── */
-    section { padding: 5rem 2rem; }
-    .container { max-width: 900px; margin: 0 auto; }
-
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-    .section-title span {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .section-subtitle {
-      color: var(--text-muted);
-      margin-bottom: 3rem;
-      font-size: .95rem;
-    }
-
-    /* ── SOBRE ── */
-    #sobre { background: var(--surface); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about-text p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .stat-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem;
-      text-align: center;
-    }
-    .stat-card .number {
-      font-size: 2rem;
-      font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .stat-card .label { font-size: .8rem; color: var(--text-muted); margin-top: .25rem; }
-
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-
-    .skill-group h3 {
-      font-size: .9rem;
-      font-weight: 600;
-      color: var(--accent-light);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: 1rem;
-    }
-
-    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-
-    .tag {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: .35rem .8rem;
-      border-radius: 6px;
-      font-size: .82rem;
-      font-weight: 500;
-      transition: all .2s;
-    }
-    .tag:hover { border-color: var(--accent-light); color: var(--text); }
-
-    .tag-learning {
-      background: rgba(124,58,237,.1);
-      border-color: rgba(124,58,237,.3);
-      color: var(--accent-light);
-    }
-
-    /* ── PROJETOS ── */
-    #projetos { background: var(--surface); }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: all .2s;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    .project-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(124,58,237,.15);
-    }
-
-    .project-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .project-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .5rem; }
-    .project-card p { font-size: .85rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6; }
-
-    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .project-tag {
-      background: rgba(124,58,237,.1);
-      color: var(--accent-light);
-      border-radius: 4px;
-      padding: .2rem .5rem;
-      font-size: .75rem;
-      font-weight: 500;
-    }
-
-    /* ── CONTATO ── */
-    .contact-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 3rem;
-      text-align: center;
-      max-width: 560px;
-      margin: 0 auto;
-    }
-    .contact-card h2 { font-size: 1.6rem; margin-bottom: .75rem; }
-    .contact-card p { color: var(--text-muted); margin-bottom: 2rem; }
-    .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-muted);
-      font-size: .85rem;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      .about-grid, .skills-grid { grid-template-columns: 1fr; }
-      nav { padding: 1rem; }
-    }
-  </style>
+.reveal{opacity:0;transform:translateY(16px);transition:.6s ease}
+.reveal.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-logo">Emanuel Mota</span>
-    <ul class="nav-links">
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projetos">Projetos</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#sobre" onclick="closeMenu()">Sobre</a>
-    <a href="#skills" onclick="closeMenu()">Skills</a>
-    <a href="#projetos" onclick="closeMenu()">Projetos</a>
-    <a href="#contato" onclick="closeMenu()">Contato</a>
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">Emanuel Mota</a>
+    <div class="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#competencias">Competências</a>
+      <a href="#certificacoes">Certificações</a>
+      <a href="#contato">Contato</a>
+    </div>
   </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-
-      <!-- TEXTO -->
-      <div class="hero-text">
-        <span class="hero-badge">🚀 Aberto a novas oportunidades</span>
-        <h1>Olá, sou <span>Emanuel Mota</span></h1>
-        <p>Analista de Infraestrutura em transição para o Front-end. Construindo interfaces com HTML, CSS e JavaScript.</p>
-        <div class="hero-buttons">
-          <a href="#projetos" class="btn btn-primary">Ver projetos</a>
-          <a href="https://linkedin.com/in/emanuel-lisboa01" target="_blank" class="btn btn-outline">LinkedIn</a>
-        </div>
-      </div>
-
-      <!-- FOTO -->
-      <div class="hero-photo">
-        <img src="./foto.jpg" alt="Emanuel Mota" />
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SOBRE -->
-  <section id="sobre">
-    <div class="container">
-      <h2 class="section-title">Sobre <span>mim</span></h2>
-      <p class="section-subtitle">Quem sou e de onde vim</p>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>Sou Analista de Infraestrutura com experiência em ambientes Microsoft 365, Azure, Linux e monitoramento de sistemas. Trabalho com gestão de acessos, Intune, Entra ID e suporte a redes.</p>
-          <p>Atualmente estou em transição para o Front-end, estudando HTML, CSS e JavaScript e construindo projetos práticos para consolidar o aprendizado.</p>
-          <p>Meu diferencial é unir o olhar técnico de infraestrutura com a criação de interfaces — entendo os dois mundos.</p>
-        </div>
-        <div class="about-stats">
-          <div class="stat-card">
-            <div class="number">+2</div>
-            <div class="label">Anos em Infra</div>
-          </div>
-          <div class="stat-card">
-            <div class="number">SP</div>
-            <div class="label">São Paulo, Brasil</div>
-          </div>
-          <div class="stat-card">
-            <div class="number">3+</div>
-            <div class="label">Projetos no GitHub</div>
-          </div>
-          <div class="stat-card">
-            <div class="number">100%</div>
-            <div class="label">Comprometido</div>
-          </div>
-        </div>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="badge"><span class="dot"></span>Aberto a oportunidades em IAM, Segurança e Infraestrutura</span>
+      <h1>Emanuel Mota<br><span>IAM & Infraestrutura</span></h1>
+      <p class="lead">Analista de Infraestrutura com foco em <strong>Gestão de Identidades e Acessos</strong>. Cinco anos em TI corporativa, mais de três no <strong>setor financeiro</strong>, operando ambientes críticos com Entra ID, Active Directory, Azure, Zabbix e Grafana.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://linkedin.com/in/emanuel-lisboa01" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="#trajetoria">Ver trajetória</a>
+        <a class="btn" href="mailto:emanuelmota15@gmail.com">E-mail</a>
       </div>
     </div>
-  </section>
+    <div class="photo"><img src="./foto.jpg" alt="Foto de Emanuel Mota"></div>
+  </div>
+  <div class="wrap stats-wrap">
+    <div class="stats">
+      <div class="stat"><b>5 anos</b><span>em TI corporativa</span></div>
+      <div class="stat"><b>3+ anos</b><span>no setor financeiro e de pagamentos</span></div>
+      <div class="stat"><b>Bradesco</b><span>efetivado pelo cliente após atuar como consultor</span></div>
+      <div class="stat"><b>EN</b><span>operação com time global de TI nos EUA</span></div>
+    </div>
+  </div>
+</header>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title"><span>Skills</span> & Ferramentas</h2>
-      <p class="section-subtitle">O que uso no dia a dia e o que estou aprendendo</p>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <h3>☁️ Infraestrutura & Cloud</h3>
-          <div class="skill-tags">
-            <span class="tag">Azure</span>
-            <span class="tag">Microsoft 365</span>
-            <span class="tag">Intune</span>
-            <span class="tag">Entra ID</span>
-            <span class="tag">Linux</span>
-            <span class="tag">Zabbix</span>
-            <span class="tag">Grafana</span>
-            <span class="tag">Redes</span>
-            <span class="tag">Troubleshooting</span>
-            <span class="tag">Gestão de Acessos</span>
-          </div>
+<section id="sobre" class="about">
+  <div class="wrap reveal">
+    <span class="kicker">Sobre</span>
+    <h2>Infraestrutura no dia a dia, identidade como foco</h2>
+    <p>No Grupo Bradesco, fui responsável pela concessão, alteração e revogação de acessos no Microsoft Entra ID, e-mails e sistemas corporativos, seguindo as políticas de segurança do banco, além da sustentação e do monitoramento do ambiente com Zabbix e Grafana. Comecei como consultor da act digital e fui contratado diretamente pelo cliente.</p>
+    <p>Na Mary Kay do Brasil, administrei Active Directory, Exchange, Office 365 e Azure, com report em inglês ao time global nos EUA e atuação junto ao SOC. Na Sem Parar, comecei em Prevenção à Fraude, validando a identidade de clientes com análise documental e biometria, e passei por suporte de aplicações e banco de dados até chegar a analista.</p>
+    <p>Sou formado em Análise e Desenvolvimento de Sistemas, o que me dá leitura ponta a ponta dos sistemas que mantenho e facilita a conversa com times de desenvolvimento durante incidentes.</p>
+
+    <div class="grid3" style="margin-top:36px">
+      <div class="card main">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3>Identidades e acessos</h3>
+        <p>Ciclo de vida de acessos no Entra ID e Active Directory, permissões em grupos e pastas, aplicação de políticas de segurança e validação de identidade.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>Monitoramento e sustentação</h3>
+        <p>Zabbix e Grafana em servidores, rede, storage e links; tratamento de alertas, troubleshooting e escalonamento N1/N2/N3 em ambiente crítico.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+        <h3>Microsoft e Cloud</h3>
+        <p>Office 365, Exchange, SCCM, Intune e Azure (VMs, usuários e permissões), com suporte a redes TCP/IP, firewalls e MPLS.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trajetoria">
+  <div class="wrap reveal">
+    <span class="kicker">Trajetória</span>
+    <h2>De prevenção à fraude a gestão de acessos em banco</h2>
+    <p class="sub">Uma linha contínua: validar quem é quem e garantir que cada pessoa tenha o acesso certo.</p>
+
+    <div class="tl">
+      <div class="item">
+        <div class="when">mar 2026 – out 2026</div>
+        <h3>Analista de Infraestrutura <span class="tag">efetivado</span></h3>
+        <div class="org">TDS Informática · Grupo Bradesco</div>
+        <ul>
+          <li>Concessão, alteração e revogação de acessos no Entra ID, e-mails e sistemas, conforme políticas do banco</li>
+          <li>Monitoramento de servidores, rede, storage e links com Zabbix e Grafana</li>
+          <li>Troubleshooting N1 e escalonamento estruturado para N2/N3</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="when">jun 2025 – mar 2026</div>
+        <h3>Analista de Infraestrutura · Sustentação</h3>
+        <div class="org">act digital · cliente TDS / Grupo Bradesco</div>
+        <ul>
+          <li>Sustentação de ambiente crítico do setor financeiro</li>
+          <li>Gestão de acessos e permissões; acionamento de operadoras de link</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="when">fev 2024 – jan 2025</div>
+        <h3>Analista de Suporte</h3>
+        <div class="org">Mary Kay do Brasil</div>
+        <ul>
+          <li>Active Directory, Exchange, Office 365, SCCM e Azure</li>
+          <li>Chamados em inglês no Ivanti com report ao time de Dallas (EUA)</li>
+          <li>Atuação com SOC em correções e atualizações de segurança em endpoints</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="when">jun 2021 – ago 2023</div>
+        <h3>Estagiário → Analista de Suporte</h3>
+        <div class="org">Sem Parar (FLEETCOR)</div>
+        <ul>
+          <li>Application Support: análise de permissões de usuários, rotinas em Oracle e SQL Server, PL/SQL</li>
+          <li>Service Support e suporte: fila no ServiceNow, Active Directory, hardware e inventário</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="when">ago 2020 – jun 2021</div>
+        <h3>Jovem Aprendiz · Prevenção à Fraude</h3>
+        <div class="org">Sem Parar (FLEETCOR)</div>
+        <ul>
+          <li>Validação de identidade com análise documental e comparação biométrica</li>
+          <li>Análise de cadastros suspeitos e bloqueio de contratos fraudulentos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="competencias">
+  <div class="wrap reveal">
+    <span class="kicker">Competências</span>
+    <h2>Ferramentas que uso em produção</h2>
+    <p class="sub">Destacadas: o núcleo da atuação em identidade e acessos.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>Identidade e Segurança</h3>
+        <div class="chips">
+          <span class="chip hl">Gestão de Identidades e Acessos</span>
+          <span class="chip hl">Microsoft Entra ID</span>
+          <span class="chip hl">Active Directory</span>
+          <span class="chip hl">Controle de acesso</span>
+          <span class="chip">Políticas de segurança</span>
+          <span class="chip">Prevenção à fraude</span>
+          <span class="chip">Endpoints / SOC</span>
         </div>
-        <div class="skill-group">
-          <h3>💻 Front-end (aprendendo)</h3>
-          <div class="skill-tags">
-            <span class="tag tag-learning">HTML5</span>
-            <span class="tag tag-learning">CSS3</span>
-            <span class="tag tag-learning">JavaScript</span>
-            <span class="tag tag-learning">Responsivo</span>
-            <span class="tag tag-learning">Git & GitHub</span>
-          </div>
+      </div>
+      <div class="card">
+        <h3>Microsoft e Cloud</h3>
+        <div class="chips">
+          <span class="chip">Azure</span>
+          <span class="chip">Office 365</span>
+          <span class="chip">Exchange</span>
+          <span class="chip">SCCM</span>
+          <span class="chip">Intune</span>
+          <span class="chip">Windows Server</span>
+          <span class="chip">AWS · GCP (base)</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Monitoramento e Redes</h3>
+        <div class="chips">
+          <span class="chip">Zabbix</span>
+          <span class="chip">Grafana</span>
+          <span class="chip">TCP/IP</span>
+          <span class="chip">Switches e roteadores</span>
+          <span class="chip">Firewalls</span>
+          <span class="chip">Links MPLS</span>
+          <span class="chip">Linux</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>ITSM e Dados</h3>
+        <div class="chips">
+          <span class="chip">ServiceNow</span>
+          <span class="chip">Ivanti</span>
+          <span class="chip">Escalonamento N1/N2/N3</span>
+          <span class="chip">Oracle</span>
+          <span class="chip">SQL Server</span>
+          <span class="chip">PL/SQL</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PROJETOS -->
-  <section id="projetos">
-    <div class="container">
-      <h2 class="section-title">Meus <span>Projetos</span></h2>
-      <p class="section-subtitle">O que estou construindo para evoluir no Front-end</p>
-      <div class="projects-grid">
+<section id="certificacoes">
+  <div class="wrap reveal">
+    <span class="kicker">Certificações</span>
+    <h2>Formação contínua</h2>
+    <p class="sub">Análise e Desenvolvimento de Sistemas · UNINOVE (2021–2023)</p>
+    <div class="certs">
+      <div class="cert"><small>dez 2025</small><b>Getting Started in Cybersecurity 3.0</b><span class="issuer">Fortinet</span></div>
+      <div class="cert"><small>dez 2025</small><b>Introduction to the Threat Landscape 3.0</b><span class="issuer">Fortinet</span></div>
+      <div class="cert"><small>abr 2026</small><b>Linux Fundamentos</b><span class="issuer">FIAP</span></div>
+      <div class="cert"><small>jun 2026</small><b>Android Enterprise Expert</b><span class="issuer">Google / Android</span></div>
+      <div class="cert"><small>mar 2026</small><b>Android Enterprise Professional e Certified Associate</b><span class="issuer">Google / Android</span></div>
+      <div class="cert"><small>2023</small><b>Imersão Cloud na Prática · Descubra a Nuvem</b><span class="issuer">The Cloud Bootcamp · DIO</span></div>
+    </div>
+  </div>
+</section>
 
-        <a class="project-card" href="https://github.com/Emanuellisboa/portfolio" target="_blank">
-          <div class="project-icon">🌐</div>
-          <h3>Portfólio Pessoal</h3>
-          <p>Este site — portfólio responsivo com tema dark, construído do zero com HTML, CSS e JS puro.</p>
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-            <span class="project-tag">JavaScript</span>
-          </div>
-        </a>
-
-        <a class="project-card" href="https://github.com/Emanuellisboa/copyflix" target="_blank">
-          <div class="project-icon">🎬</div>
-          <h3>Copyflix</h3>
-          <p>Clone responsivo da interface da Netflix. Foco em layout, flexbox e estilização avançada.</p>
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-          </div>
-        </a>
-
-        <a class="project-card" href="https://github.com/Emanuellisboa/catalogo.html" target="_blank">
-          <div class="project-icon">📋</div>
-          <h3>Catálogo</h3>
-          <p>Página de catálogo HTML/CSS com estrutura de grid e listagem de itens.</p>
-          <div class="project-tags">
-            <span class="project-tag">HTML</span>
-            <span class="project-tag">CSS</span>
-          </div>
-        </a>
-
+<section id="projetos">
+  <div class="wrap reveal">
+    <span class="kicker">Também programo</span>
+    <h2>Projetos pessoais</h2>
+    <p class="sub">A base em desenvolvimento ajuda a entender as aplicações que sustento e a automatizar rotinas.</p>
+    <div class="grid3">
+      <div class="card proj">
+        <div><h3>Este portfólio</h3><p>Site responsivo em HTML, CSS e JavaScript puro, publicado no GitHub Pages.</p></div>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JS</span></div>
+        <a class="link" href="https://github.com/Emanuellisboa/portfolio" target="_blank" rel="noopener">Ver código →</a>
+      </div>
+      <div class="card proj">
+        <div><h3>Copyflix</h3><p>Interface de streaming responsiva, com foco em layout e flexbox.</p></div>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span></div>
+        <a class="link" href="https://github.com/Emanuellisboa/copyflix" target="_blank" rel="noopener">Ver código →</a>
+      </div>
+      <div class="card proj">
+        <div><h3>Catálogo</h3><p>Página de catálogo com grid e listagem de itens.</p></div>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span></div>
+        <a class="link" href="https://github.com/Emanuellisboa/catalogo.html" target="_blank" rel="noopener">Ver código →</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTATO -->
-  <section id="contato">
-    <div class="container">
-      <h2 class="section-title" style="text-align:center">Vamos <span>conversar?</span></h2>
-      <p class="section-subtitle" style="text-align:center">Aberto a oportunidades, freelas e conexões</p>
-      <div class="contact-card">
-        <h2>Entre em contato</h2>
-        <p>Me manda uma mensagem no LinkedIn ou acompanha meus projetos no GitHub. Sempre aberto a trocar ideias!</p>
-        <div class="contact-links">
-          <a href="https://linkedin.com/in/emanuel-lisboa01" target="_blank" class="btn btn-primary">LinkedIn</a>
-          <a href="https://github.com/Emanuellisboa" target="_blank" class="btn btn-outline">GitHub</a>
-        </div>
-      </div>
+<section id="contato" class="contact">
+  <div class="wrap reveal">
+    <span class="kicker">Contato</span>
+    <h2>Vamos conversar?</h2>
+    <p class="sub">Aberto a oportunidades em IAM, Segurança da Informação e Infraestrutura. São Paulo · presencial, híbrido ou remoto.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:emanuelmota15@gmail.com">emanuelmota15@gmail.com</a>
+      <a class="btn" href="https://linkedin.com/in/emanuel-lisboa01" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Emanuellisboa" target="_blank" rel="noopener">GitHub</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>Feito por Emanuel Mota · 2026</p>
-  </footer>
+<footer><span class="mono">© 2026 Emanuel Mota Lisboa</span></footer>
 
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-
-    function closeMenu() {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-    }
-  </script>
-
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
