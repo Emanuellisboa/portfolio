@@ -95,6 +95,14 @@ h2{font-size:clamp(1.6rem,3vw,2.1rem);margin:6px 0 10px;letter-spacing:-.01em}
 .chip{font-size:.84rem;padding:6px 12px;border-radius:8px;background:var(--bg2);border:1px solid var(--line);color:#d8d8e8}
 .chip.hl{border-color:#4b3a9c;color:#d7ccff}
 
+/* EDU */
+.edu{margin-top:20px}
+.edu small{color:var(--muted);font-size:.8rem}
+.edu h3{font-size:1.15rem;margin:4px 0 10px}
+.edu p{font-size:.95rem;color:#cfcfe0;margin-bottom:10px}
+.edu-more{color:var(--muted);font-size:.88rem;margin:14px 0 40px}
+.certs-title{font-size:1.1rem;margin-bottom:16px}
+
 /* CERTS */
 .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:860px){.certs{grid-template-columns:1fr 1fr}}
@@ -129,7 +137,7 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:.85rem;bord
       <a href="#sobre">Sobre</a>
       <a href="#trajetoria">Trajetória</a>
       <a href="#competencias">Competências</a>
-      <a href="#certificacoes">Certificações</a>
+      <a href="#certificacoes">Formação</a>
       <a href="#contato">Contato</a>
     </div>
   </div>
@@ -304,9 +312,16 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:.85rem;bord
 
 <section id="certificacoes">
   <div class="wrap reveal">
-    <span class="kicker">Certificações</span>
-    <h2>Formação contínua</h2>
-    <p class="sub">Análise e Desenvolvimento de Sistemas · UNINOVE (2021–2023)</p>
+    <span class="kicker">Formação</span>
+    <h2>Formação e certificações</h2>
+    <div class="card main edu">
+      <small>2021 – 2023 · UNINOVE</small>
+      <h3>Análise e Desenvolvimento de Sistemas</h3>
+      <p>Formação com base em programação, banco de dados, redes de computadores e engenharia de software. Essa base me dá leitura ponta a ponta das aplicações que sustento: entender como um sistema autentica usuários, consulta o banco e se comunica pela rede ajuda a diagnosticar incidentes e a conversar com os times de desenvolvimento.</p>
+      <p>Conciliei o curso com o estágio em Application Support na Sem Parar, aplicando SQL, PL/SQL e rotinas de banco de dados no dia a dia.</p>
+    </div>
+    <p class="edu-more">Também: Competências para o Mercado de Trabalho · UECE (2019) · Programa Formare, técnico em produção e montagem · UTFPR / Meritor do Brasil (2018)</p>
+    <h3 class="certs-title">Certificações</h3>
     <div class="certs">
       <div class="cert"><small>dez 2025</small><b>Getting Started in Cybersecurity 3.0</b><span class="issuer">Fortinet</span></div>
       <div class="cert"><small>dez 2025</small><b>Introduction to the Threat Landscape 3.0</b><span class="issuer">Fortinet</span></div>
